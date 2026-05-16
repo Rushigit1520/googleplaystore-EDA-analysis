@@ -177,7 +177,7 @@ body {
     border-radius: var(--radius-md);
     box-shadow: var(--glass-shadow);
     padding: 28px 24px;
-    transition: all var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
 }
@@ -418,7 +418,7 @@ body {
     padding: 12px 32px;
     cursor: pointer;
     letter-spacing: 0.5px;
-    transition: all var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: 0 4px 18px rgba(0, 240, 255, 0.2);
     width: 100%;
     margin-top: 6px;
