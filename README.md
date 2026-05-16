@@ -29,7 +29,7 @@ A **futuristic, dark-neon themed** ML Intelligence Dashboard that performs deep 
 ## 📸 Dashboard Sections
 
 - **Header** — Gradient typing animation with subtitle
-- **KPI Cards** — Total Apps (10,841), Avg Rating (4.21), Total Installs (167B+), Categories (34)
+- **KPI Cards** — Total Apps (~10K+), Avg Rating (4.21), Total Installs (167B+), Categories (34)
 - **ML Model Performance** — R² Score, MAE, Features Used
 - **Feature Importance** — Horizontal bar chart of Random Forest feature importances
 - **Interactive Data Explorer** — Category dropdown filter with 3 reactive charts
