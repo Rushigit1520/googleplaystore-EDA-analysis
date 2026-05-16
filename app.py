@@ -303,13 +303,24 @@ app.layout = html.Div([
 
         html.Div(className="charts-grid", children=[
             html.Div(className="glass-card chart-card", children=[
-                dcc.Graph(id="rating-dist-fig", config={"displayModeBar": False}),
+                dcc.Loading(type="cube", color="#00f0ff", children=[
+                    dcc.Graph(id="rating-dist-fig", config={"displayModeBar": False})
+                ])
             ]),
             html.Div(className="glass-card chart-card", children=[
-                dcc.Graph(id="installs-type-fig", config={"displayModeBar": False}),
+                dcc.Loading(type="cube", color="#00ff88", children=[
+                    dcc.Graph(id="installs-type-fig", config={"displayModeBar": False})
+                ])
             ]),
             html.Div(className="glass-card chart-card chart-full", children=[
-                dcc.Graph(id="scatter-size-rating-fig", config={"displayModeBar": False}),
+                dcc.Loading(type="cube", color="#b44aff", children=[
+                    dcc.Graph(id="scatter-size-rating-fig", config={"displayModeBar": False})
+                ])
+            ]),
+            html.Div(className="glass-card chart-card chart-full", children=[
+                dcc.Loading(type="cube", color="#ff8c00", children=[
+                    dcc.Graph(id="top-apps-bar-fig", config={"displayModeBar": False})
+                ])
             ]),
         ]),
 
@@ -357,11 +368,18 @@ app.layout = html.Div([
             ]),
 
             # Result
-            html.Div(id="prediction-output", className="glass-card prediction-result-card",
-                     children=[
-                         html.Div("Enter app details and hit Predict",
-                                  className="prediction-waiting"),
-                     ]),
+            html.Div(className="glass-card prediction-result-card", children=[
+                dcc.Loading(
+                    type="circle",
+                    color="#ff2d95",
+                    children=[
+                        html.Div(id="prediction-output", children=[
+                            html.Div("Enter app details and hit Predict",
+                                     className="prediction-waiting"),
+                        ])
+                    ]
+                )
+            ]),
         ]),
 
         # ── Footer ──
@@ -383,17 +401,18 @@ app.layout = html.Div([
 @app.callback(
     [Output("rating-dist-fig", "figure"),
      Output("installs-type-fig", "figure"),
-     Output("scatter-size-rating-fig", "figure")],
+     Output("scatter-size-rating-fig", "figure"),
+     Output("top-apps-bar-fig", "figure")],
     [Input("category-dropdown", "value")]
 )
 def update_charts(selected_category):
     empty = go.Figure().update_layout(**CHART_LAYOUT, title="No data available")
     if not DATA_LOADED or not selected_category:
-        return empty, empty, empty
+        return empty, empty, empty, empty
 
     fdf = df[df["Category"] == selected_category]
     if fdf.empty:
-        return empty, empty, empty
+        return empty, empty, empty, empty
 
     # 1) Rating Distribution
     fig_rating = px.histogram(
@@ -438,7 +457,22 @@ def update_charts(selected_category):
         marker=dict(line=dict(width=0)),
     )
 
-    return fig_rating, fig_type, fig_scatter
+    # 4) Top 10 Apps
+    top_apps = fdf.dropna(subset=["rating_num", "installs_clean"]).sort_values(
+        by=["installs_clean", "rating_num"], ascending=[False, False]
+    ).head(10)
+    
+    if not top_apps.empty:
+        fig_top = px.bar(
+            top_apps, x="installs_clean", y="App", orientation="h",
+            color="rating_num", title=f"Top 10 Apps by Installs — {selected_category}",
+            color_continuous_scale=["#ff2d95", "#b44aff", "#00f0ff"],
+        )
+        fig_top.update_layout(**CHART_LAYOUT, height=420, yaxis={'categoryorder':'total ascending'})
+    else:
+        fig_top = empty
+
+    return fig_rating, fig_type, fig_scatter, fig_top
 
 
 @app.callback(
