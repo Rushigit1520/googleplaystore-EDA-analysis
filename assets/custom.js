@@ -44,7 +44,7 @@
                     value: { min: 0.15, max: 0.65 },
                     animation: {
                         enable: true,
-                        speed: 0.8,
+                        speed: 0.9,
                         minimumValue: 0.1,
                         sync: false
                     }
