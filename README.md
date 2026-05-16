@@ -42,7 +42,7 @@ A **futuristic, dark-neon themed** ML Intelligence Dashboard that performs deep 
 
 | Layer | Technologies |
 |---|---|
-| **Backend** | Python, Dash, pandas, numpy |
+| **Backend** | Python, Dash, Pandas, NumPy |
 | **Machine Learning** | scikit-learn (RandomForestRegressor) |
 | **Visualization** | Plotly (dark template, neon color palette) |
 | **Frontend Styling** | Custom CSS (glassmorphism, gradients, animations) |
