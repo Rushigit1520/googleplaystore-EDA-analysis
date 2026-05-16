@@ -18,7 +18,7 @@ A **futuristic, dark-neon themed** ML Intelligence Dashboard that performs deep 
 | 🎨 **Dark Neon Glassmorphism UI** | Premium dark theme with blur-glass cards, neon cyan/purple gradients, and hover glow effects |
 | ✨ **Animated Particle Background** | Self-contained vanilla JS particle system with mouse interaction |
 | ⌨️ **Typing Animation Header** | Character-by-character typing effect on the title |
-| 📊 **Animated KPI Counters** | Scroll-triggered count-up animations for key metrics |
+| 📊 **Animated KPI Counters (Scroll-triggered)** | Scroll-triggered count-up animations for key metrics |
 | 🤖 **Random Forest ML Model** | Trained at startup to predict app ratings from 6 engineered features |
 | 🔮 **Live Prediction Form** | Enter app details → get instant rating prediction with star display |
 | 📈 **Interactive Plotly Charts** | Rating histograms, Free vs Paid donut charts, Size vs Rating bubble plots |
