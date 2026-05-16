@@ -20,7 +20,7 @@ A **futuristic, dark-neon themed** ML Intelligence Dashboard that performs deep 
 | ⌨️ **Typing Animation Header** | Character-by-character typing effect on the title |
 | 📊 **Animated KPI Counters (Scroll-triggered)** | Scroll-triggered count-up animations for key metrics |
 | 🤖 **Random Forest ML Model** | Trained at startup to predict app ratings from 6 engineered features |
-| 🔮 **Live Prediction Form** | Enter app details → get instant rating prediction with star display |
+| 🔮 **Live ML Prediction Form** | Enter app details → get instant rating prediction with star display |
 | 📈 **Interactive Plotly Charts** | Rating histograms, Free vs Paid donut charts, Size vs Rating bubble plots |
 | 📱 **Fully Responsive** | Adaptive layout for desktop, tablet, and mobile |
 
